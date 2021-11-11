@@ -28,6 +28,10 @@ export default class App extends Component {
     console.log(email, password, confirmPass)
   }
 
+  logout = () =>{
+    console.log('Sign Out');
+  }
+
   login = (e) =>{
     e.preventDefault();
     console.log(e);

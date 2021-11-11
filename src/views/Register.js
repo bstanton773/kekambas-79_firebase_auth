@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Navigate } from 'react-router-dom';
 
 export default class Register extends Component {
     render() {
-        return (
+        return this.props.user ? <Navigate to='/' /> :(
             <div>
                 <h6 className='text-center'>Register for the Thanksgiving App Here</h6>
                 <form onSubmit={(e) => this.props.register(e)}>

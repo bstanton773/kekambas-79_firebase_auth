@@ -8,12 +8,23 @@ import Login from './views/Login';
 
 
 export default class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      user: {}
+    }
+  }
+
   register = (e) => {
     e.preventDefault();
     console.log(e);
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPass = e.target.confirmPass.value;
+    if (password !== confirmPass){
+      alert('Your passwords are not the same')
+      return
+    }
     console.log(email, password, confirmPass)
   }
 
@@ -28,12 +39,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar logout={this.logout} user={this.state.user}/>
         <div className='container'>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/register' element={<Register register={this.register}/>} />
-            <Route path='/login' element={<Login login={this.login}/>} />
+            <Route path='/' element={<Home user={this.state.user}/>} />
+            <Route path='/register' element={<Register register={this.register} user={this.state.user}/>} />
+            <Route path='/login' element={<Login login={this.login} user={this.state.user}/>} />
           </Routes>
         </div>
 

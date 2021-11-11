@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import { Navigate } from 'react-router-dom';
 
 export default class Login extends Component {
     render() {
-        return (
+        return this.props.user ? <Navigate to='/' /> :(
             <div>
                 <h6 className='text-center'>Login Here</h6>
                 <form onSubmit={(e) => this.props.login(e)}>

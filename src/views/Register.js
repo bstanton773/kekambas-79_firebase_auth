@@ -5,7 +5,7 @@ export default class Register extends Component {
     render() {
         return this.props.user ? <Navigate to='/' /> :(
             <div>
-                <h6 className='text-center'>Register for the Thanksgiving App Here</h6>
+                <h6 className='text-center'>Register for the Super Bowl App Here</h6>
                 <form onSubmit={(e) => this.props.register(e)}>
                     <div className='form-group'>
                         <fieldset>

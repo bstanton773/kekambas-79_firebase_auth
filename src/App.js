@@ -5,7 +5,7 @@ import Home from './views/Home';
 import Register from './views/Register';
 import Login from './views/Login';
 import fire from './config/Fire';
-
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
 export default class App extends Component {
@@ -26,7 +26,15 @@ export default class App extends Component {
       alert('Your passwords are not the same')
       return
     }
-    console.log(email, password, confirmPass)
+    // console.log(email, password, confirmPass)
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   logout = () =>{

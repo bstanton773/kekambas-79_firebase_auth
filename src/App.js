@@ -5,7 +5,7 @@ import Home from './views/Home';
 import Register from './views/Register';
 import Login from './views/Login';
 import fire from './config/Fire';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 
 export default class App extends Component {
@@ -53,7 +53,9 @@ export default class App extends Component {
   }
 
   logout = () =>{
-    console.log('Sign Out');
+    const auth = getAuth();
+    signOut(auth).then(()=>{})
+    .catch(err => console.error(err))
   }
 
   login = (e) =>{
